@@ -1,0 +1,45 @@
+
+class Vehicle:
+    def __init__(self, make, model):
+        self.make = make
+        self.model = model
+
+    def ret(self):
+        return f"I am a {self.make} {self.model}."
+
+class Car(Vehicle): 
+    def __init__(self, make, model, fuel_type):
+        super().__init__(make, model) 
+        self.fuel_type = fuel_type
+
+    def ret(self):
+        return "I am a car"
+
+class Bike(Vehicle):  
+    def __init__(self, make, model, num_wheels):
+        super().__init__(make, model) 
+        self.num_wheels = num_wheels
+
+    def ret(self):
+        return "I am a bike"
+
+class NewCar(Car):
+    def __init__(self, make, model, fuel_type, is_new):
+        super().__init__(make, model, fuel_type)
+        self.is_new = is_new
+    
+    def newness(self):
+        return True
+
+vehicles = [
+    Car("Toyota", "Vitz", "Petrol"),
+    Bike("XYZ", "Apache", 2),
+    Vehicle("ABC", "DEF"),
+    NewCar("Tesla", "Cybertruck", "Electric", True)
+]
+
+for veh in vehicles:
+    print(veh.ret())
+
+v = vehicles[3]
+print(v.newness())  
