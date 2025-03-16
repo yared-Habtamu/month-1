@@ -1,0 +1,17 @@
+{% load static %}
+<!--<!DOCTYPE html>-->
+<html>
+<head>
+    <title>{% if form.instance.pk %}Edit Loan{% else %}Add Loan{% endif %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'loans/css/styles.css' %}">
+</head>
+<body>
+    <h1>{% if form.instance.pk %}Edit Loan{% else %}Add Loan{% endif %}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+    <a href="{% url 'loan_list' %}">Cancel</a>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{% load static %}
+<html>
+<head>
+    <title>Delete Loan</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'loans/css/styles.css' %}">
+</head>
+<body>
+    <div class="delete-confirm">
+        <h1>Delete Loan</h1>
+        <p>Are you sure you want to delete "{{ loan.name }}"?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Yes, delete</button>
+        </form>
+        <a href="{% url 'loan_list' %}">Cancel</a>
+    </div>
+</body>
+</html>

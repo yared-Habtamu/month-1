@@ -1,0 +1,28 @@
+{% load static %}
+<!--<!DOCTYPE html>-->
+<html>
+<head>
+    <title>Loan List</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'loans/css/styles.css' %}">
+</head>
+<body>
+    <h1>Loan List</h1>
+    <form method="get" action=".">
+        <input type="text" name="q" placeholder="Search by name or reason" value="{{ request.GET.q }}">
+        <button type="submit">Search</button>
+    </form>
+    <a href="{% url 'loan_create' %}">Add New Loan</a>
+
+    <p><strong>Total Outstanding Amount:</strong> ${{ total_amount }}</p>
+    <ul>
+        {% for loan in loans %}
+            <li>
+                {{ loan.name }} - {{ loan.amount }} --> {{loan.reason}}  | ({{ loan.date_issued }})
+                <a href="{% url 'loan_update' loan.pk %}">Edit</a>
+                <a href="{% url 'loan_delete' loan.pk %}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
